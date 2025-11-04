@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+:root {
+    /* Colors */
+    --main: #e11d48;
+    --bg: #05070c;
+    --slate-950: #020617;
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-500: #64748b;
+    --slate-400: #94a3b8;
+    --slate-300: #cbd5e1;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+    --white: white;
+
+    /* Sizes */
+    --size-xss: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.875rem;
+    --size-4xl: 2.25rem;
+    --size-5xl: 3rem;
+    --size-6xl: 3.75rem;
+    --size-7xl: 4.5rem;
+    --size-8xl: 6rem;
+    --size-9xl: 8rem;
+    --size-10xl: 10rem;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: "General sans", sans-serif;
+    color: var(--slate-500);
+}
+
+/* Custom Scrollbar */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--slate-800);
+    cursor: pointer;
+}
+
+@layer components {
+    header {
+        @apply fixed w-screen flex justify-end pt-7 pr-7 z-99;
+
+        img {
+            @apply w-15 h-15 border-3 border-slate-700 rounded-[5rem] p-1
+            backdrop-blur-xs cursor-pointer z-99;
+        }
+
+        nav {
+            @apply absolute z-100 opacity-0 pointer-events-none top-6.5 right-5.5;
+
+            &.is-open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            ul {
+                @apply w-35 h-75 gap-1 border-3 border-slate-900 bg-(--bg) p-5
+                pt-0 rounded-2xl;
+            }
+
+            img {
+                @apply border-none backdrop-blur-none ml-12.5;
+            }
+
+            hr {
+                @apply border-none bg-slate-800 h-0.75 rounded-2xl w-full my-2;
+            }
+
+            a {
+                @apply block text-slate-400 p-2 rounded-lg hover:bg-slate-900
+                duration-[0.25s];
+            }
+        }
+    }
+
+    #hero {
+        @apply pt-70 text-center;
+
+        p {
+            @apply font-bold text-slate-800 mb-3 text-lg sm:text-xl lg:text-2xl
+            xl:text-3xl xl:mb-5 2xl:text-4xl;
+        }
+
+        h1 {
+            @apply font-bold text-slate-400 text-4xl mb-12 lg:mb-20 sm:text-5xl
+            lg:text-6xl xl:text-7xl 2xl:mb-30 2xl:text-8xl;
+        }
+
+        .arrow {
+            @apply flex flex-col items-center gap-9 lg:gap-12 2xl:gap-17;
+        }
+
+        .bar {
+            @apply w-24 h-1 rounded-full lg:w-30 2xl:w-40;
+            animation: arrowWave 1.75s ease-in-out infinite;
+        }
+
+        .bar:nth-child(1) {animation-delay: 0s;}
+        .bar:nth-child(2) {animation-delay: 0.125s;}
+        .bar:nth-child(3) {animation-delay: 0.25s;}
+        .bar:nth-child(4) {animation-delay: 0.375s;}
+        .bar:nth-child(5) {animation-delay: 0.5s;}
+        .bar:nth-child(6) {animation-delay: 0.625s;}
+        .bar:nth-child(7) {animation-delay: 0.75s;}
+        .bar:nth-child(8) {animation-delay: 0.875s;}
+
+        .bar:nth-child(6) {@apply w-50 lg:w-60 2xl:w-80;}
+        .bar:nth-child(8) {@apply w-1;}
+    }
+
+    /* #pixel-perfect {
+        @apply relative w-screen h-screen;
+
+        canvas {
+            @apply fixed top-0 left-0 z-10;
+        }
+
+        div {
+            @apply absolute inset-0 flex items-center justify-center opacity-0
+            z-20 pointer-events-none;
+        }
+
+        h1 {
+            @apply text-white font-semibold text-center text-3xl sm:text-4xl;
+        }
+    } */
+     
+}
+
+@keyframes arrowWave {
+    0%, 100% {background: var(--slate-900);}
+    50% {background: var(--white)}
+}
