@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const PIXEL_COLORS = ["red", "lime", "blue"];
 const GRID_SIZE = 50; 
-const PIXEL_GAP = 5;
+const PIXEL_GAP = 7;
 
 function PixelPerfect() {
     const sectionRef = useRef(null);
@@ -25,9 +25,13 @@ function PixelPerfect() {
             canvas.height = window.innerHeight;
             const w = canvas.width;
             const h = canvas.height;
-            const viewportMin = Math.min(w, h);
-            const totalGridUnits = GRID_SIZE * 3 + (GRID_SIZE - 1) * PIXEL_GAP;
-            pixelUnitSize = Math.floor((viewportMin * 1.2) / totalGridUnits);
+
+            const fullUnitSize = 5 + PIXEL_GAP; 
+            const totalGridUnits = (GRID_SIZE * fullUnitSize) - PIXEL_GAP; 
+        
+            
+            const viewportMax = Math.max(w, h);
+            pixelUnitSize = Math.floor(viewportMax / totalGridUnits) + 1;
         };
 
         window.addEventListener("resize", resizeCanvas);
@@ -103,8 +107,7 @@ function PixelPerfect() {
             {
                 scale: 80,
                 transformOrigin: "center center",
-            },
-            {
+            }, {
                 scale: 1,
                 ease: "power2.out",
                 duration: 1.2,
