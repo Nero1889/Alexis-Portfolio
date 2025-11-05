@@ -29,7 +29,6 @@ function PixelPerfect() {
             const fullUnitSize = 5 + PIXEL_GAP; 
             const totalGridUnits = (GRID_SIZE * fullUnitSize) - PIXEL_GAP; 
         
-            
             const viewportMax = Math.max(w, h);
             pixelUnitSize = Math.floor(viewportMax / totalGridUnits) + 1;
         };
@@ -82,7 +81,7 @@ function PixelPerfect() {
             ctx.globalAlpha = 1;
         };
 
-        const animationVars = { progress: 0 };
+        const animationVars = {progress: 0};
         const draw = () => drawPixels(animationVars.progress);
         gsap.ticker.add(draw);
 
@@ -110,7 +109,7 @@ function PixelPerfect() {
             }, {
                 scale: 1,
                 ease: "power2.out",
-                duration: 1.2,
+                duration: 0.7,
             },
             ">+0.3"
         );
