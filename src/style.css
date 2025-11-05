@@ -65,7 +65,7 @@ body::-webkit-scrollbar-thumb {
 
         img {
             @apply w-15 h-15 border-3 border-slate-700 rounded-[5rem] p-1
-            backdrop-blur-xs cursor-pointer z-99;
+             cursor-pointer z-99;
         }
 
         nav {
@@ -131,23 +131,23 @@ body::-webkit-scrollbar-thumb {
         .bar:nth-child(8) {@apply w-1;}
     }
 
-    /* #pixel-perfect {
-        @apply relative w-screen h-screen;
+    #pixel-perfect {
+        @apply relative w-screen h-screen overflow-hidden;
 
         canvas {
-            @apply fixed top-0 left-0 z-10;
+            @apply fixed top-0 left-0 z-10 w-full h-full;
         }
 
         div {
-            @apply absolute inset-0 flex items-center justify-center opacity-0
-            z-20 pointer-events-none;
+            @apply absolute inset-0 flex items-center justify-center z-20
+            pointer-events-none overflow-hidden;
         }
 
         h1 {
-            @apply text-white font-semibold text-center text-3xl sm:text-4xl;
+            @apply text-white font-semibold text-center text-3xl sm:text-4xl
+            md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl;
         }
-    } */
-     
+    }
 }
 
 @keyframes arrowWave {
