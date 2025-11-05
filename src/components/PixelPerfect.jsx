@@ -5,7 +5,7 @@ import {ScrollTrigger} from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const PIXEL_COLORS = ["red", "lime", "blue"];
-const GRID_SIZE = 50; 
+const GRID_SIZE = 60;
 const PIXEL_GAP = 7;
 
 function PixelPerfect() {
@@ -61,9 +61,6 @@ function PixelPerfect() {
             const startX = cx - gridWidth / 2;
             const startY = cy - gridHeight / 2;
 
-            const alphaFade = 1 - gsap.utils.clamp(0, 1, (progress - 0.8) * 4);
-            ctx.globalAlpha = alphaFade;
-
             for (let row = 0; row < GRID_SIZE; row++) {
                 for (let col = 0; col < GRID_SIZE; col++) {
                     const x = startX + col * fullSize;
@@ -101,6 +98,16 @@ function PixelPerfect() {
             duration: 1.2,
         });
 
+        tl.to(
+            canvas,
+            {
+                opacity: 0,
+                ease: "power2.out",
+                duration: 0.6,
+            },
+            ">-0.5"
+        );
+
         tl.fromTo(
             textRef.current,
             {
@@ -122,13 +129,10 @@ function PixelPerfect() {
     }, []);
 
     return (
-        <section id="pixel-perfect" ref={sectionRef} className="relative w-screen
-        h-screen overflow-hidden">
-            <canvas ref={canvasRef} className="fixed top-0 left-0 z-10 w-full h-full"/>
-            <div className="absolute inset-0 flex items-center justify-center z-20
-            pointer-events-none overflow-hidden">
-                <h1 ref={textRef} className="text-white font-semibold text-center
-                text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
+        <section id="pixel-perfect" ref={sectionRef}>
+            <canvas ref={canvasRef}/>
+            <div>
+                <h1 ref={textRef}>
                     <span>I'm</span>{" "}
                     <span>a</span>{" "}
                     <span>pixel<br />perfectionist</span>
