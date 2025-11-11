@@ -148,6 +148,21 @@ body::-webkit-scrollbar-thumb {
             md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl;
         }
     }
+
+    #animation {
+        @apply relative w-screen h-screen mt-800 flex items-center
+        justify-center overflow-hidden;
+
+        div {
+            @apply absolute border-[7px] rounded-xl;
+        }
+
+        h1 {
+            @apply text-white font-semibold text-center text-3xl sm:text-4xl
+            md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl z-20
+            whitespace-nowrap;
+        }
+    }
 }
 
 @keyframes arrowWave {
