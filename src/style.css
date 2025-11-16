@@ -61,37 +61,28 @@ body::-webkit-scrollbar-thumb {
 
 @layer components {
     header {
-        @apply fixed w-screen flex justify-end pt-7 pr-7 z-99;
+        @apply fixed flex justify-end w-full z-9999;
+
+        div {
+            @apply relative ml-auto p-7;
+        }
 
         img {
-            @apply w-15 h-15 border-3 border-slate-700 rounded-[5rem] p-1
-             cursor-pointer z-99;
+            @apply w-12 hover:bg-slate-900 p-1 rounded-lg cursor-pointer
+            duration-[0.25s];
         }
 
         nav {
-            @apply absolute z-100 opacity-0 pointer-events-none top-6.5 right-5.5;
+            @apply absolute mt-2 bg-slate-900 p-2 rounded-xl border
+            border-slate-700 w-35 right-7;
+        }
 
-            &.is-open {
-                opacity: 1;
-                pointer-events: auto;
-            }
-            
-            ul {
-                @apply w-35 h-75 gap-1 border-3 border-slate-900 bg-(--bg) p-5
-                pt-0 rounded-2xl;
-            }
-
-            img {
-                @apply border-none backdrop-blur-none ml-12.5;
-            }
-
-            hr {
-                @apply border-none bg-slate-800 h-0.75 rounded-2xl w-full my-2;
-            }
+        ul {
+            @apply text-white flex flex-col;
 
             a {
-                @apply block text-slate-400 p-2 rounded-lg hover:bg-slate-900
-                duration-[0.25s];
+                @apply text-sm block w-full hover:bg-slate-800 py-2 px-3
+                rounded-lg duration-[0.25s];
             }
         }
     }
@@ -129,6 +120,7 @@ body::-webkit-scrollbar-thumb {
 
         .bar:nth-child(6) {@apply w-50 lg:w-60 2xl:w-80;}
         .bar:nth-child(8) {@apply w-1;}
+
     }
 
     #pixel-perfect {
