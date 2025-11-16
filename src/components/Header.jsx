@@ -1,31 +1,41 @@
-import {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import menu from "/icons/menu.png";
-import close from "/icons/close.png";
-import {navigation} from "../constants/main.js";
 
-function Header() {
+export default function Priority() {
     const [isOpen, setIsOpen] = useState(false);
+    const menuRef = useRef(null);
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
+    useEffect(() => {
+        function handleClickOutside(e) {
+            if (menuRef.current && !menuRef.current.contains(e.target)) {
+                setIsOpen(false);
+            }
+        }
+        
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+        
+    }, [menuRef]);
+
     return (
-        <header className={isOpen ? "nav-open" : ""}>
-            <img src={menu} alt="Menu" draggable="false" onClick={toggleMenu}/>
-                    
-            <nav className={isOpen ? "is-open" : ""}> 
-                <ul>
-                    <img src={close} alt="Close" draggable="false"
-                    onClick={toggleMenu}/>
-                    <hr/>
-                    {navigation.map(({name, href}) => (
-                        <li key={name}>
-                            <a href={href} onClick={toggleMenu}>{name}</a>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
+        <header>
+            <div ref={menuRef}> 
+                <img src={menu} alt="Menu" draggable="false"
+                onClick={toggleMenu}/>
+                        
+                {isOpen && (
+                    <nav>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#work">Work</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                )}
+            </div>
         </header>
     );
 }
-
-export default Header;
