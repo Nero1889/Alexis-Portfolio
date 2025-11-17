@@ -73,7 +73,7 @@ body::-webkit-scrollbar-thumb {
         }
 
         nav {
-            @apply absolute mt-2 bg-slate-900 p-2 rounded-xl border
+            @apply absolute hidden mt-2 bg-slate-900 p-2 rounded-xl border
             border-slate-700 w-35 right-7;
         }
 
@@ -98,7 +98,12 @@ body::-webkit-scrollbar-thumb {
         h1 {
             @apply font-bold text-slate-400 text-4xl mb-12 lg:mb-20 sm:text-5xl
             lg:text-6xl xl:text-7xl 2xl:mb-30 2xl:text-8xl;
+
+            span {
+                @apply inline-block; 
+            }
         }
+    
 
         .arrow {
             @apply flex flex-col items-center gap-9 lg:gap-12 2xl:gap-17;
@@ -155,6 +160,15 @@ body::-webkit-scrollbar-thumb {
             whitespace-nowrap;
         }
     }
+}
+
+.loading {
+    filter: blur(40px) grayscale(100%);
+}
+
+.loaded {
+    filter: blur(0) grayscale(0);
+    transition: 0.7s ease-in-out;
 }
 
 @keyframes arrowWave {
