@@ -4,7 +4,7 @@ import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Animation() {
+export default function Animation() {
     const sectionRef = useRef(null);
     const squaresRef = useRef([]);
 
@@ -63,5 +63,3 @@ function Animation() {
         </section>
     );
 }
-
-export default Animation;
