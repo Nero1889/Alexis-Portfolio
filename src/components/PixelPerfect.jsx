@@ -8,7 +8,7 @@ const PIXEL_COLORS = ["red", "lime", "blue"];
 const GRID_SIZE = 60;
 const PIXEL_GAP = 7;
 
-function PixelPerfect() {
+export default function PixelPerfect() {
     const sectionRef = useRef(null);
     const canvasRef = useRef(null);
     const textRef = useRef(null);
@@ -135,11 +135,10 @@ function PixelPerfect() {
                 <h1 ref={textRef}>
                     <span>I'm</span>{" "}
                     <span>a</span>{" "}
-                    <span>pixel<br />perfectionist</span>
+                    <span>pixel<br/>perfectionist</span>
                 </h1>
             </div>
         </section>
+        
     );
 }
-
-export default PixelPerfect;
