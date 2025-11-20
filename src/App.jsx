@@ -2,7 +2,8 @@ import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import PixelPerfect from "./components/PixelPerfect.jsx";
 import Animation from "./components/Animation.jsx";
-import Priority from "./components/Priority.jsx";
+import Interactive from "./components/Interactive.jsx";
+/* import Priority from "./components/Priority.jsx"; */
 
 export default function App() {
     return (
@@ -11,7 +12,8 @@ export default function App() {
             <Hero/>
             <PixelPerfect/>
             <Animation/>
-            <Priority/>
+            <Interactive/>
+            {/* <Priority/> */}
         </main>
     );
 }
